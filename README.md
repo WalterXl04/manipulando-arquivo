@@ -1,36 +1,54 @@
-# 🛒 Sistema de Gestão de Produtos com Persistência em Arquivo
+# 🛒 Sistema de Gestão de Estoque com Persistência em Arquivo
 
-Projeto desenvolvido em **Java** para aplicar conceitos de Programação Orientada a Objetos e Manipulação de Arquivos (I/O). O sistema simula o cadastro de produtos de um mercado, salvando os dados em disco e gerando relatórios de estoque.
+Sistema desenvolvido em Java para aplicar o ciclo completo de manipulação de arquivos (I/O): **Escrita (Gravação)** e **Leitura (Parsing)** de dados, utilizando boas práticas de Programação Orientada a Objetos.
+
+O projeto simula um sistema de mercado onde é possível cadastrar produtos, salvar em disco e depois ler para gerar relatórios financeiros.
+
+## 📂 Estrutura do Projeto
+
+O código está organizado em pacotes para separar responsabilidades (MVC):
+
+* `src/br/edu/imepac/entidades/Produto.java`: **Modelo (Entidade)**. Classe que define o objeto Produto.
+* `src/br/edu/imepac/Exercicio.java`: **Módulo de Escrita**. Responsável por interagir com o usuário e salvar os dados.
+* `src/br/edu/imepac/Leitor.java`: **Módulo de Leitura**. Responsável por ler o arquivo e gerar o relatório.
 
 ## 🚀 Funcionalidades
 
-O projeto é dividido em dois módulos principais:
+### 1. Cadastro (Classe `Exercicio`)
+* Recebe dados do usuário via terminal (Nome, Preço, Quantidade).
+* Cria objetos do tipo `Produto`.
+* Armazena os dados no arquivo `C:\temp\lista.txt` usando `BufferedWriter`.
 
-1.  **Módulo de Escrita (Cadastro):**
-  * Captura dados do usuário via Terminal (Nome, Preço, Quantidade).
-  * Utiliza a classe `Produto` (Entidade) para modelar os dados.
-  * Persiste as informações em um arquivo de texto (`.txt`) no formato CSV (separado por ponto e vírgula).
+### 2. Relatório (Classe `Leitor`)
+* Lê o arquivo de texto gerado.
+* Realiza o **Parsing** dos dados (converte Texto -> Número).
+* Calcula o subtotal (`Preço * Quantidade`) e o **Total Geral do Estoque**.
+* Exibe os dados formatados no console.
 
-2.  **Módulo de Leitura (Relatório):**
-  * Lê o arquivo gerado anteriormente.
-  * Realiza o *parsing* dos dados (converte `String` para `double`/`int`).
-  * Calcula o subtotal de cada item (`Preço * Quantidade`).
-  * Exibe o **Valor Total do Estoque** no console.
-
-## 🛠️ Tecnologias e Conceitos Utilizados
+## 🛠️ Tecnologias Utilizadas
 
 * **Java 17+**
-* **POO:** Encapsulamento, Classes, Objetos e Construtores.
-* **Collections:** `ArrayList` para manipulação de listas em memória.
-* **File I/O:** `BufferedWriter` e `FileWriter` (para escrita); `BufferedReader` e `FileReader` (para leitura).
-* **Tratamento de Exceções:** Blocos `try-with-resources` para garantir o fechamento seguro dos arquivos.
-* **Manipulação de Strings:** Método `.split(";")` para processar os dados do arquivo.
+* **POO:** Classes, Objetos, Encapsulamento e Pacotes.
+* **Collections:** `ArrayList` para listas em memória.
+* **File I/O:** `FileReader`, `BufferedReader`, `FileWriter`, `BufferedWriter`.
+* **String Manipulation:** Método `.split(";")` para tratamento de dados CSV.
 
-## 📂 Estrutura do Arquivo (.txt)
+## 📦 Como Executar
 
-O sistema gera/lê um arquivo no seguinte padrão:
+1.  **Pré-requisito:** Crie a pasta `C:\temp\` no seu computador.
+2.  **Passo 1 (Gravar):** Execute a classe `Exercicio`.
+  * Cadastre alguns produtos (Ex: Arroz, 10.0, 3).
+  * Digite `0` para sair e salvar.
+3.  **Passo 2 (Ler):** Execute a classe `Leitor`.
+  * O console mostrará a lista de compras e o valor total calculado.
+
+## ✅ Exemplo de Saída (Console do `Leitor`)
 
 ```text
-Arroz;10.0;3
-Feijao;8.50;2
-Macarrao;5.0;5
+--- Lendo Arquivo de Compras ---
+PRODUTO: Arroz
+Preço: R$ 10.0
+Qtd: 3
+Arroz - R$ 10.0 x 3 = R$ 30.0
+-----------------
+VALOR TOTAL DO ESTOQUE: R$ 30.0
