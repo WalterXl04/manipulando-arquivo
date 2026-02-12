@@ -36,7 +36,7 @@ O código está organizado em pacotes para separar responsabilidades (MVC):
 ## 📦 Como Executar
 
 1.  **Pré-requisito:** Crie a pasta `C:\temp\` no seu computador.
-2.  **Passo 1 (Gravar):** Execute a classe `Exercicio`.
+2.  **Passo 1 (Gravar):** Execute a classe `Sistema`.
   * Cadastre alguns produtos (Ex: Arroz, 10.0, 3).
   * Digite `0` para sair e salvar.
 3.  **Passo 2 (Ler):** Execute a classe `Leitor`.

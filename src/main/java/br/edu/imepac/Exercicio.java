@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Exercicio {
 
-  public static void main(String[] args) {
+  public static void cadastrar() {
     Scanner sc = new Scanner(System.in);
     ArrayList<Produto> lista = new ArrayList<>();
     String path = "c:\\temp\\lista.txt";
