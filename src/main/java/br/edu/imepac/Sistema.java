@@ -12,6 +12,11 @@ public class Sistema {
     do {
       System.out.println("Escolha 1 para cadastrar produtos ao estoque.");
       System.out.println("Escolha 2 para ver relatórios. ");
+      try {
+        opcao = Integer.parseInt(sc.nextLine());
+      }catch (NumberFormatException e) {
+        opcao = -1;
+      }
       opcao = Integer.parseInt(sc.nextLine());
 
       switch (opcao) {
@@ -21,6 +26,8 @@ public class Sistema {
         case 2:
           Leitor.gerarRelatorio();
           break;
+        case 3:
+
         case 0:
           System.out.println("Saindo!!");
           break;
@@ -28,6 +35,7 @@ public class Sistema {
           System.out.println("Opção inválida!");
       }
     } while (opcao != 0);
+    sc.close();
       }
     }
 
