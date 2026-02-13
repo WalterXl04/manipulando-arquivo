@@ -12,12 +12,12 @@ public class Sistema {
     do {
       System.out.println("Escolha 1 para cadastrar produtos ao estoque.");
       System.out.println("Escolha 2 para ver relatórios. ");
+      System.out.println("Escolha 3 para procurar produtos. ");
       try {
         opcao = Integer.parseInt(sc.nextLine());
       }catch (NumberFormatException e) {
         opcao = -1;
       }
-      opcao = Integer.parseInt(sc.nextLine());
 
       switch (opcao) {
         case 1:
@@ -27,6 +27,10 @@ public class Sistema {
           Leitor.gerarRelatorio();
           break;
         case 3:
+          System.out.println("Digite o nome do produto: ");
+          String nomeProduto = sc.nextLine();
+          Leitor.buscarProduto(nomeProduto);
+          break;
 
         case 0:
           System.out.println("Saindo!!");
