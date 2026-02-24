@@ -1,54 +1,34 @@
-# 🛒 Sistema de Gestão de Estoque com Persistência em Arquivo
+# 🛒 Sistema de Gerenciamento de Estoque - Mercadinho
 
-Sistema desenvolvido em Java para aplicar o ciclo completo de manipulação de arquivos (I/O): **Escrita (Gravação)** e **Leitura (Parsing)** de dados, utilizando boas práticas de Programação Orientada a Objetos.
+Bem-vindo ao repositório do **Sistema de Gerenciamento de Estoque**! Este é um projeto desenvolvido em **Java**, focado em aplicar conceitos sólidos de Programação Orientada a Objetos (POO) e manipulação de arquivos de texto (I/O).
 
-O projeto simula um sistema de mercado onde é possível cadastrar produtos, salvar em disco e depois ler para gerar relatórios financeiros.
+## 🎯 Objetivo do Projeto
+Criar uma aplicação via terminal (Console/CLI) para gerenciar os produtos de um mercadinho, permitindo o controle total do estoque através de um menu interativo, salvando os dados de forma persistente em um arquivo `.txt`.
 
-## 📂 Estrutura do Projeto
+## 🚀 Funcionalidades (Status: CR_D)
+O sistema já conta com as seguintes operações de banco de dados em arquivo:
 
-O código está organizado em pacotes para separar responsabilidades (MVC):
+- [x] **Case 1: Cadastrar Produtos (Create)** - Adiciona novos produtos ao arquivo de estoque.
+- [x] **Case 2: Gerar Relatórios (Read)** - Lista todos os produtos cadastrados no sistema.
+- [x] **Case 3: Buscar Produto (Read)** - Filtra e encontra um produto específico no estoque.
+- [x] **Case 4: Deletar Produto (Delete)** - Remove um produto do estoque utilizando a arquitetura de arquivos temporários.
 
-* `src/br/edu/imepac/entidades/Produto.java`: **Modelo (Entidade)**. Classe que define o objeto Produto.
-* `src/br/edu/imepac/Exercicio.java`: **Módulo de Escrita**. Responsável por interagir com o usuário e salvar os dados.
-* `src/br/edu/imepac/Leitor.java`: **Módulo de Leitura**. Responsável por ler o arquivo e gerar o relatório.
+## 💻 Tecnologias e Conceitos Utilizados
+Durante o desenvolvimento deste sistema, os seguintes conceitos e ferramentas da linguagem Java foram aplicados:
 
-## 🚀 Funcionalidades
+* **Linguagem:** Java
+* **Manipulação de Arquivos (java.io):**
+  * `File` (Mapeamento de caminhos)
+  * `FileReader` e `BufferedReader` (Leitura otimizada)
+  * `FileWriter` e `BufferedWriter` (Escrita otimizada)
+* **Tratamento de Exceções:** Uso de blocos `try-catch` para garantir a segurança na manipulação de arquivos e entradas de usuário (`NumberFormatException`, `IOException`).
+* **Estruturas de Controle:** Laços de repetição (`do-while`, `while`) e menus de decisão (`switch-case`).
+* **Arquitetura:** Separação de responsabilidades em pacotes (`entidades`, `util`).
 
-### 1. Cadastro (Classe `Exercicio`)
-* Recebe dados do usuário via terminal (Nome, Preço, Quantidade).
-* Cria objetos do tipo `Produto`.
-* Armazena os dados no arquivo `C:\temp\lista.txt` usando `BufferedWriter`.
+## 📂 Estrutura de Pacotes
+O projeto segue o princípio da responsabilidade única, dividindo as classes por contexto:
+* `br.edu.imepac.entidades`: Contém as regras de negócio dos objetos (ex: `Produto`).
+* `br.edu.imepac.util`: Contém as ferramentas do sistema (ex: `Leitor`, `GerenciadorExclusao`).
 
-### 2. Relatório (Classe `Leitor`)
-* Lê o arquivo de texto gerado.
-* Realiza o **Parsing** dos dados (converte Texto -> Número).
-* Calcula o subtotal (`Preço * Quantidade`) e o **Total Geral do Estoque**.
-* Exibe os dados formatados no console.
-
-## 🛠️ Tecnologias Utilizadas
-
-* **Java 17+**
-* **POO:** Classes, Objetos, Encapsulamento e Pacotes.
-* **Collections:** `ArrayList` para listas em memória.
-* **File I/O:** `FileReader`, `BufferedReader`, `FileWriter`, `BufferedWriter`.
-* **String Manipulation:** Método `.split(";")` para tratamento de dados CSV.
-
-## 📦 Como Executar
-
-1.  **Pré-requisito:** Crie a pasta `C:\temp\` no seu computador.
-2.  **Passo 1 (Gravar):** Execute a classe `Sistema`.
-  * Cadastre alguns produtos (Ex: Arroz, 10.0, 3).
-  * Digite `0` para sair e salvar.
-3.  **Passo 2 (Ler):** Execute a classe `Leitor`.
-  * O console mostrará a lista de compras e o valor total calculado.
-
-## ✅ Exemplo de Saída (Console do `Leitor`)
-
-```text
---- Lendo Arquivo de Compras ---
-PRODUTO: Arroz
-Preço: R$ 10.0
-Qtd: 3
-Arroz - R$ 10.0 x 3 = R$ 30.0
------------------
-VALOR TOTAL DO ESTOQUE: R$ 30.0
+---
+*Desenvolvido com dedicação e muito café por Luis! ☕*

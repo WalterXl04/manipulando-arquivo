@@ -1,4 +1,4 @@
-package br.edu.imepac;
+package br.edu.imepac.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
