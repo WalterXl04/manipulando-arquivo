@@ -1,5 +1,6 @@
 package br.edu.imepac;
 
+import br.edu.imepac.util.GerenciadorEdicao;
 import br.edu.imepac.util.GerenciadorExclusao;
 import br.edu.imepac.util.Leitor;
 
@@ -17,6 +18,7 @@ public class Sistema {
       System.out.println("Escolha 2 para ver relatórios. ");
       System.out.println("Escolha 3 para procurar produtos. ");
       System.out.println("Escolha 4 para deletar algum produto. ");
+      System.out.println("Escolha 5 para editar algum produto. ");
       try {
         opcao = Integer.parseInt(sc.nextLine());
       }catch (NumberFormatException e) {
@@ -27,9 +29,11 @@ public class Sistema {
         case 1:
           Exercicio.cadastrar();
           break;
+
         case 2:
           Leitor.gerarRelatorio();
           break;
+
         case 3:
           System.out.println("Digite o nome do produto: ");
           String nomeProduto = sc.nextLine();
@@ -41,6 +45,13 @@ public class Sistema {
             String nomeProduto2 = sc.nextLine();
             GerenciadorExclusao.deletarProduto(nomeProduto2);
             break;
+
+        case 5:
+        System.out.println("Digite o nome do produto: ");
+        String nomeProduto3 = sc.nextLine();
+          GerenciadorEdicao.editarProduto(nomeProduto3);
+        break;
+
         case 0:
           System.out.println("Saindo!!");
           break;
@@ -48,7 +59,6 @@ public class Sistema {
           System.out.println("Opção inválida!");
       }
     } while (opcao != 0);
-    sc.close();
       }
     }
 
